@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id="action_school_degree_student" model="ir.actions.act_window">
+        <field name="name">Degree Students</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_level' : 'degree'}</field>
+        <field name="domain">[('level', '=', 'degree')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first degree student !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_student_master"
+              name="Student Details"
+              parent="menu_school_root"
+              sequence="0"/>
+
+    <menuitem id="menu_degree_student"
+              name="Degree Student"
+              action="action_school_degree_student"
+              parent="menu_student_master"
+              sequence="20"/>
+
+
+</odoo>

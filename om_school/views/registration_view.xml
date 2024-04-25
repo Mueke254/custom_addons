@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_school_registration_tree" model="ir.ui.view">
+        <field name="name">school.registration.tree</field>
+        <field name="model">school.registration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="registration_time"/>
+                <field name="booking_date"/>
+                <field name="state"
+                       decoration-success="state=='done'" decoration-info="state in ('draft', 'ongoing')"
+                       widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_school_registration_form" model="ir.ui.view">
+        <field name="name">school.registration.form</field>
+        <field name="model">school.registration</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1"/>
+                </header>
+                <sheet>
+                    <div>
+                        <hi>
+                            <field name="priority" widget="priority" class="mr.3"/>
+                        </hi>
+                    </div>
+                    <group>
+                        <field name="student_id"/>
+                        <field name="booking_date"/>
+                        <group>
+                            <field name="registration_time"/>
+                            <button name="action_test" string="Object Button" type="object" class="oe_highlight"/>
+                            <button name="%(om_school.action_school_student)d" string="Action Button"
+                                    help="On clicking this button, you will be redirected to students records"
+                                    confirm="Are you sure to open student action"
+                                    type="action" class="oe_highlight"/>
+
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Exams">
+                            <field name="exams" placeholder="Enter your Exams"/>
+                        </page>
+                        <page string="Exam hall">
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_school_registration_search" model="ir.ui.view">
+        <field name="name">school.registration.search</field>
+        <field name="model">school.registration</field>
+        <field name="arch" type="xml">
+            <search>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_school_registration" model="ir.actions.act_window">
+        <field name="name">Registration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.registration</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first registration !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_student_master"
+              name="Student Details"
+              parent="menu_school_root"
+              sequence="20"/>
+
+    <menuitem id="menu_registration"
+              name="Registration"
+              action="action_school_registration"
+              parent="menu_school_root"
+              sequence="20"/>
+
+
+</odoo>

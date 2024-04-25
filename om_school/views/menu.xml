@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="menu_school_root"
+              name="School"
+              web_icon="om_school,static/description/icon.png"
+              sequence="50"/>
+
+<!--    <menuitem id="menu_registration_master"-->
+<!--              name="Registration"-->
+<!--              parent ="menu_school_root"-->
+<!--              sequence="20"/>-->
+
+
+</odoo>
